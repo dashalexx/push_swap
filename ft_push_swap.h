@@ -24,7 +24,7 @@ typedef struct  s_stack
     int         size;
     int         max;
     int         min;
-    int         *step;
+    int         oper;
     int         flag;
 }               t_stack;
 

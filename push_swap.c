@@ -128,8 +128,8 @@ void    ra(t_stack *a)
 
 void    rrr(t_stack *a, t_stack *b)
 {
-    ra(a);
-    ra(b);
+    rra(a);
+    rra(b);
 }
 
 void    rrb(t_stack *b)

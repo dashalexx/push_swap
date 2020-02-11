@@ -66,6 +66,9 @@ void	roll_b(t_stack *b)
 
 void	algos(t_stack *a, t_stack *b)
 {
+	int aa;
+
+	aa = a->oper + b->oper;
 	while (b->size)
 	{
 		// print_stack(b);
@@ -73,9 +76,27 @@ void	algos(t_stack *a, t_stack *b)
 		// print_stack(b);
 		// print_stack(a);
 		count_steps(a, b);
+		aa += ft_abs(a->flag);
+		aa += ft_abs(b->flag);
+		aa++;
+		while (a->flag < 0 && b->flag < 0)
+		{
+			rrr(a, b);
+			a->flag++;
+			b->flag++;
+			aa--;
+		}
+		while (a->flag > 0 && b->flag > 0)
+		{
+			rr(a, b);
+			a->flag--;
+			b->flag--;
+			aa--;			
+		}
 		roll_a(a);
 		roll_b(b);
 		pa(a, b);
 		// ft_putstr("pa\n");
 	}
+	printf("%d\n", aa);
 }

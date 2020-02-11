@@ -23,15 +23,20 @@ void	swap_max_min(t_stack *a, t_stack *b)
 		if (a->nb[0] != a->min && a->nb[0] != a->max)
 		{
 			pb(a, b);
+			a->oper++;
 			//ft_putstr("pb\n");
 			continue ;
 		}
 		//ft_putstr("ra\n");
 	 	ra(a);
+		a->oper++;
 	}
 	if (a->nb[0] < a->nb[1])
+	{
 		//ft_putstr("ra\n");
 		 ra(a);
+		 a->oper++;
+	}
 	// b->size = a->size -2;
 	// a->size -= 2;
 }
@@ -102,14 +107,14 @@ void	count_steps(t_stack *a, t_stack *b)
 
 	i = 1;
 	a->flag = count_a(b->nb[0], a);
-	b->flag = count_b(0, b);
+	b->flag = recount(0, b->size);
 	k = ft_abs(a->flag) + ft_abs(b->flag);
 	if (!k)
 		return ;
 	while (i < b->size)
 	{
 		tmp1 = count_a(b->nb[i], a);
-		tmp2 = count_b(i, b);
+		tmp2 = recount(i, b->size);
 		if (ft_abs(tmp1) + ft_abs(tmp2) < k)
 		{
 			k = ft_abs(tmp1) + ft_abs(tmp2);
